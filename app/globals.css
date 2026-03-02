@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: #db7107;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -22,5 +23,124 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-oxanium), sans-serif;
+}
+
+/* ===============================
+   GALAXY HERO BACKGROUND
+   =============================== */
+
+@layer utilities {
+  .bg-space {
+    /* Color variables */
+    --bg-col: #010101;
+    --space-col: #2d093a;
+    --galaxy-col: #460a42;
+
+    /* Base background */
+    background-color: var(--bg-col);
+
+    /* Galaxy gradients + stars */
+    background-image:
+      radial-gradient(ellipse at top, var(--bg-col), transparent),
+      radial-gradient(ellipse at bottom, var(--galaxy-col) 10%, transparent 60%),
+      radial-gradient(ellipse at bottom right, var(--space-col), transparent),
+
+      radial-gradient(circle at 52% 54%, rgba(255, 255, 255, .58) 3px, transparent 4px),
+      radial-gradient(circle at 22% 24%, rgba(255, 255, 255, .58) 2px, transparent 3px),
+      radial-gradient(circle at 14% 18%, rgba(255, 255, 255, .58) 3px, transparent 8px),
+      radial-gradient(circle at 18% 21%, rgba(255, 255, 255, .58) 4px, transparent 5px),
+      radial-gradient(circle at 36% 9%, rgba(255, 255, 255, .58) 3px, transparent 5px),
+      radial-gradient(circle at 28% 31%, rgba(255, 255, 255, .39) 2px, transparent 3px),
+      radial-gradient(circle at 62% 61%, rgba(255, 255, 255, .53) 3px, transparent 4px),
+      radial-gradient(circle at 57% 66%, rgba(255, 255, 255, .84) 6px, transparent 8px),
+      radial-gradient(circle at 65% 71%, rgba(255, 255, 255, .53) 1px, transparent 3px),
+      radial-gradient(circle at 67% 68%, rgba(255, 255, 255, .65) 3px, transparent 3px),
+      radial-gradient(circle at 43% 44%, rgba(255, 255, 255, .74) 2px, transparent 6px),
+      radial-gradient(circle at 40% 39%, rgba(183, 243, 255, .84) 4px, transparent 10px),
+      radial-gradient(circle at 41% 40%, rgba(255, 255, 255, .70) 5px, transparent 6px),
+      radial-gradient(circle at 38% 38%, rgba(255, 255, 255, .35) 2px, transparent 4px),
+      radial-gradient(circle at 39% 42%, rgba(255, 255, 255, .75) 5px, transparent 7px);
+
+    background-size: 175% 200%;
+    background-repeat: no-repeat;
+  }
+}
+
+/* ===============================
+   GALAXY BRAND TEXT
+   (inherits global font)
+   =============================== */
+
+@layer utilities {
+  .galaxy-text {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 800;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif !important;
+    text-transform: uppercase;
+    letter-spacing: clamp(.2rem, 1.2vw, 1rem);
+    margin: 0;
+    line-height: 1.05;
+    text-align: center;
+    opacity: .1 !important;
+
+    /* Gradient text */
+    background-image: linear-gradient(90deg,
+        rgba(255, 136, 16, 0.15),
+        rgba(219, 113, 7, 0.544),
+        rgba(250, 181, 91, 0.635),
+        rgba(219, 113, 7, .2));
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Glow */
+    text-shadow: 15px 10px 55px plum;
+    /* Glow */
+    text-shadow: 0 0 35px rgba(219, 113, 7, .35);
+
+
+    /* Entry animation */
+    animation: galaxy-stretch .8s ease-out forwards;
+  }
+}
+
+/* ===============================
+   ANIMATIONS
+   =============================== */
+
+@keyframes space-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  33% {
+    background-position: 80% 0%;
+  }
+
+  67% {
+    background-position: 80% 100%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes galaxy-stretch {
+  from {
+    opacity: .7;
+    transform: scale(.85);
+    letter-spacing: normal;
+    filter: blur(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+    letter-spacing: 1rem;
+    filter: blur(0);
+  }
 }
