@@ -4,6 +4,7 @@ import { useState } from "react";
 import HeroBackground from "@/components/HeroBackground";
 import HeroButton from "@/components/ui/HeroButton";
 import { TypingText } from "@/components/ui/TypingText";
+import UniqueSections from "@/components/UniqueSections";
 
 export default function HomePage() {
   const [secondLine, setSecondLine] = useState(false)
@@ -71,6 +72,9 @@ export default function HomePage() {
           and critical infrastructure protection.
         </p>
       </section>
+
+      {/* unique animated sections */}
+      <UniqueSections />
 
     </main>
   );
